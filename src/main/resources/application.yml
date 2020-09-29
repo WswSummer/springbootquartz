@@ -4,11 +4,38 @@ server:
 spring:
     datasource:
         type: com.alibaba.druid.pool.DruidDataSource
-        url: jdbc:mysql://39.107.80.231:3306/SSO?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
-        username: HengTian
-        password: HengTian0.0
+        url: jdbc:mysql://localhost:3306/quartz?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+        username: root
+        password: wsw19980801
 
     jpa:
         hibernate:
             ddl-auto: none
         show-sql: true
+
+    quartz:
+        properties:
+            org:
+                quartz:
+                    scheduler:
+                        instanceName: clusteredScheduler # 调度器实例名称
+                        instanceId: AUTO # 调度器实例编号自动生成
+                    jobStore:
+                        dataSource: smartlog
+                        class: org.quartz.impl.jdbcjobstore.JobStoreTX # 持久化方式配置
+                        driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate # 持久化方式配置数据驱动，MySQL数据库
+                        tablePrefix: QRTZ_ # 数据库持久化表前缀
+                        # 集群部署
+                        isClustered: true # 开启分布式部署
+                        clusterCheckinInterval: 10000 # 分布式节点有效性检查时间间隔，单位：毫秒
+                        useProperties: true # 配置是否使用
+                    threadPool:
+                        class: org.quartz.simpl.SimpleThreadPool # 线程池实现类
+                        threadCount: 10 # 执行最大并发线程数量
+                        threadPriority: 5 # 线程优先级
+                        threadsInheritContextClassLoaderOfInitializingThread: true  # 配置是否启动自动加载数据库内的定时任务，默认true
+        # 数据库方式
+        job-store-type: jdbc
+        # 初始化表结构
+        #jdbc:
+        #initialize-schema: never

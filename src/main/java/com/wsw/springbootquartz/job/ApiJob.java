@@ -1,9 +1,11 @@
 package com.wsw.springbootquartz.job;
 
+import com.wsw.springbootquartz.service.JobService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -14,8 +16,17 @@ import java.util.Date;
  */
 @Slf4j
 public class ApiJob implements Job {
+    @Autowired
+    private JobService jobService;
+
     @Override
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
-        log.info(new Date() + "正在执行...");
+        log.info(new Date() + " -> 业务代码执行...");
+        try {
+            jobService.helloWorld();
+        } catch (Exception e) {
+            log.info(new Date() + " -> 执行异常 " + e.getMessage());
+        }
+        log.info(new Date() + " -> 执行完成");
     }
 }

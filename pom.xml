@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-        <!--quartz作业调度-->
+        <!--quartz定时任务调度-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-quartz</artifactId>
