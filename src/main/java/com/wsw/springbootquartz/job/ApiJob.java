@@ -1,5 +1,6 @@
 package com.wsw.springbootquartz.job;
 
+import com.wsw.springbootquartz.entity.User;
 import com.wsw.springbootquartz.service.JobService;
 import lombok.extern.slf4j.Slf4j;
 import org.quartz.Job;
@@ -24,7 +25,8 @@ public class ApiJob implements Job {
         log.info(new Date() + " -> 业务代码执行...");
         try {
             // 业务代码执行
-            jobService.sayHello();
+            //jobService.sayHello();
+            System.out.println(jobService.findUserByUserName("wsw"));
         } catch (Exception e) {
             log.info(new Date() + " -> 执行异常 " + e.getMessage());
         }

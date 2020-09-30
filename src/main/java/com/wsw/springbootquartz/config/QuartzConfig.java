@@ -24,7 +24,7 @@ public class QuartzConfig {
     public Trigger myTrigger(){
         return TriggerBuilder.newTrigger().forJob(myJobDetail())
                 .withIdentity("myTrigger", "myTriggerGroup")
-                .withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?"))  // corn表达式---两秒执行一次
+                .withSchedule(CronScheduleBuilder.cronSchedule("0/10 * * * * ?"))  // corn表达式---10秒执行一次
                 .build();
     }
 }
