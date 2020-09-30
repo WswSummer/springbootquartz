@@ -23,7 +23,8 @@ public class ApiJob implements Job {
     public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
         log.info(new Date() + " -> 业务代码执行...");
         try {
-            jobService.helloWorld();
+            // 业务代码执行
+            jobService.sayHello();
         } catch (Exception e) {
             log.info(new Date() + " -> 执行异常 " + e.getMessage());
         }

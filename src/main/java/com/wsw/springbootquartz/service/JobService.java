@@ -6,5 +6,5 @@ package com.wsw.springbootquartz.service;
  * @Description:
  */
 public interface JobService {
-    String helloWorld();
+    void sayHello();
 }

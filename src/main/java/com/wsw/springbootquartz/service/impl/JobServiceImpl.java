@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class JobServiceImpl implements JobService {
     @Override
-    public String helloWorld() {
-        return "Hello World";
+    public void sayHello() {
+        System.out.println("Hello World");
     }
 }

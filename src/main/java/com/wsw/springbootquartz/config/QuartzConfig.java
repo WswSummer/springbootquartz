@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 /**
  * @Author WangSongWen
  * @Date: Created in 9:46 2020/9/29
- * @Description:
+ * @Description: 调度工厂、调度实例
  */
 @Configuration
 public class QuartzConfig {
@@ -22,7 +22,7 @@ public class QuartzConfig {
 
     @Bean
     public Trigger myTrigger(){
-        return TriggerBuilder.newTrigger().forJob("myJobDetail")
+        return TriggerBuilder.newTrigger().forJob(myJobDetail())
                 .withIdentity("myTrigger", "myTriggerGroup")
                 .withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?"))  // corn表达式---两秒执行一次
                 .build();
