@@ -29,7 +29,7 @@ spring:
                         # 集群部署
                         isClustered: true # 开启分布式部署
                         clusterCheckinInterval: 20000 # 分布式节点有效性检查时间间隔，单位：毫秒
-                        useProperties: false # 配置是否使用
+                        useProperties: true # 配置是否使用
                     threadPool:
                         class: org.quartz.simpl.SimpleThreadPool # 线程池实现类
                         threadCount: 25 # 执行最大并发线程数量
@@ -42,3 +42,7 @@ spring:
                             user: root
                             password: wsw19980801
                             maxConnections: 5
+    redis:
+        host: 39.107.80.231
+        port: 6379
+        password:
