@@ -188,3 +188,6 @@ CREATE INDEX IDX_QRTZ_FT_TG ON QRTZ_FIRED_TRIGGERS(SCHED_NAME,TRIGGER_GROUP);
  
 commit;
 ```
+
+运行效果:
+![运行效果](images/效果.png)
